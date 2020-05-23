@@ -1,9 +1,39 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
+
+body {
+    padding: 0;
     margin: 0;
+    background-color: rgb(61, 61, 61);
+    font-family: 'Roboto', sans-serif;
+    color: white;
 }
 
-/* Background and font definitions */
-body {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    background-color: lightsteelblue;
+header {
+    height: 100px;
+    margin-top: 25px;
+    margin-left: 25px;
 }
+
+.container_1 {
+    display: flex;
+}
+
+h1 {
+    margin: 0px 10px;
+}
+
+h5 {
+    margin: 5px 10px;
+    font-weight: 300;
+}
+
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+
