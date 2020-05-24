@@ -26,12 +26,12 @@ let book2 = new book('MegaTitle', 'MegaAuthor', 123, 'No').addBook();
 
 // Append Library to table
 
-function render() {
+function render(i) {
 const libraryTable = document.getElementById('libraryTable');
 
 
     //New Row for each book object in the library array
-    for (let i = 0 ; i < myLibrary.length ; i++) {
+    for (i ; i < myLibrary.length ; i++) {
         let newRow = libraryTable.insertRow(i+1);
 
         //Create number of cells equivalent to book properties for each row
@@ -48,4 +48,36 @@ const libraryTable = document.getElementById('libraryTable');
     }
 }
 
-render();
+//Functionality for button "New Book"
+const newBookButton = document.getElementById('addButton');
+const formContainer = document.getElementById('newBookForm');
+
+    //Opens up the new book form
+    newBookButton.addEventListener('click', (e) => {
+            formContainer.style.visibility = 'visible';
+        }
+    )
+
+//Functionality for new book form buttons
+const addBookButton= document.getElementById('addBook');
+    
+    //Get values from input fields and create new book object
+    addBookButton.addEventListener('click', (e) => {
+    const bookName = document.getElementById('bookName').value;
+    const authorName = document.getElementById('authorName').value;
+    const pageNumber = document.getElementById('pageNumber').value;
+    const isRead = document.getElementById('isRead').value;
+
+    new book(bookName, authorName, pageNumber, isRead).addBook();    
+
+    //Adds only the last added book to the table
+    render(myLibrary.length-1);
+})
+
+const cancelButton= document.getElementById('cancel');
+cancelButton.addEventListener('click', (e) => {
+    formContainer.style.visibility = 'hidden';
+})
+
+// Render all items from library array
+render(0);

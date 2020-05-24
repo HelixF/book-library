@@ -68,6 +68,35 @@ td, th {
     text-align: center;
 }
 
+h3 {
+    text-align: center;
+ 
+}
+
+.newBookContainer {
+    visibility: hidden;
+    margin: 0 auto;
+    padding: 5px;
+    background: #282828;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    max-width: 200px;
+    min-height: 250px;
+}
+
+input[type=text] {
+    margin-left: 25px;
+    text-align: center;
+    padding: 10px 10px;
+    background-color: rgb(177, 177, 177);
+    border: solid 1px;
+}
+
+.formButton {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
 
 
 
