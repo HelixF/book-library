@@ -56,6 +56,18 @@ button {
     background-color: #1f1e1e;
 }
 
+table {
+    margin: 0 auto;
+    border-style: solid;
+}
+
+td, th {
+    border: 1px solid;
+    margin: 0;
+    min-width: 200px;
+    text-align: center;
+}
+
 
 
 
