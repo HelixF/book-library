@@ -34,8 +34,11 @@ const libraryTable = document.getElementById('libraryTable');
     for (i ; i < myLibrary.length ; i++) {
         let newRow = libraryTable.insertRow(i+1);
 
+        //Set data attribute to correspond to array index
+        newRow.dataset.indexNumber = 'myLibraryPos' + i;
+
         //Create number of cells equivalent to book properties for each row
-        for (c = 0; c < book.length; c++) {
+        for (c = 0; c < 5; c++) {
         let newCell = newRow.insertCell(newRow);
         }
 
@@ -44,6 +47,11 @@ const libraryTable = document.getElementById('libraryTable');
         newRow.children[1].innerHTML = myLibrary[i].author;
         newRow.children[2].innerHTML = myLibrary[i].pages;
         newRow.children[3].innerHTML = myLibrary[i].read;
+
+        //Generate and append delete button to new library entries
+        let deleteButton = document.createElement('button');
+        deleteButton.innerHTML = 'Delete';
+        newRow.children[4].appendChild(deleteButton);
 
     }
 }
