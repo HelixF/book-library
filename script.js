@@ -20,8 +20,8 @@ book.prototype.addBook =  function() {
 }
 
 //Dummy books
-let book1 = new book('AwesomeTitle', 'MagicAuthor', 534, 'Yes').addBook();
-let book2 = new book('MegaTitle', 'MegaAuthor', 123, 'No').addBook();
+// let book1 = new book('AwesomeTitle', 'MagicAuthor', 534, 'Yes').addBook();
+// let book2 = new book('MegaTitle', 'MegaAuthor', 123, 'No').addBook();
 
 
 // Append Library to table
@@ -32,10 +32,10 @@ const libraryTable = document.getElementById('libraryTable');
 
     //New Row for each book object in the library array
     for (i ; i < myLibrary.length ; i++) {
-        let newRow = libraryTable.insertRow(i+1);
+        let newRow = libraryTable.insertRow(-1);
 
         //Set data attribute to correspond to array index
-        newRow.dataset.indexNumber = 'myLibraryPos' + i;
+        newRow.setAttribute('id', 'rowNumber' + i);
 
         //Create number of cells equivalent to book properties for each row
         for (c = 0; c < 5; c++) {
@@ -51,7 +51,12 @@ const libraryTable = document.getElementById('libraryTable');
         //Generate and append delete button to new library entries
         let deleteButton = document.createElement('button');
         deleteButton.innerHTML = 'Delete';
+        deleteButton.setAttribute('id', 'deleteRow' + i);
+        deleteButton.setAttribute('class', 'deleteButton');
+        deleteButton.addEventListener('click', (e) => {deleteRow(i)});
         newRow.children[4].appendChild(deleteButton);
+
+
 
     }
 }
@@ -89,3 +94,11 @@ cancelButton.addEventListener('click', (e) => {
 
 // Render all items from library array
 render(0);
+
+
+//Delete function for delete buttons
+
+function deleteRow(i) {
+    let deleteRow = document.getElementById('rowNumber' + (i-1));
+    deleteRow.parentNode.removeChild(deleteRow);
+}
