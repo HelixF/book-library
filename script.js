@@ -81,10 +81,18 @@ const addBookButton= document.getElementById('addBook');
     const pageNumber = document.getElementById('pageNumber').value;
     const isRead = document.getElementById('isRead').value;
 
-    new book(bookName, authorName, pageNumber, isRead).addBook();    
+    new book(bookName, authorName, pageNumber, isRead).addBook();   
+    
 
     //Adds only the last added book to the table
     render(myLibrary.length-1);
+
+    //Reset input form
+    document.getElementById('bookName').value = '';
+    document.getElementById('authorName').value = '';
+    document.getElementById('pageNumber').value = '';
+    document.getElementById('isRead').value = '';
+
 })
 
 const cancelButton= document.getElementById('cancel');
@@ -97,8 +105,8 @@ render(0);
 
 
 //Delete function for delete buttons
-
 function deleteRow(i) {
     let deleteRow = document.getElementById('rowNumber' + (i-1));
     deleteRow.parentNode.removeChild(deleteRow);
 }
+
