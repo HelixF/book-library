@@ -10,7 +10,7 @@ function book(title, author, pages, read) {
 }
 
 // Prototype for adding a book to the library array
-book.prototype.addBook =  function() {
+book.prototype.addBook = function() {
     myLibrary.push({
         title: this.title, 
         author: this.author, 
@@ -19,9 +19,7 @@ book.prototype.addBook =  function() {
     });
 }
 
-//Dummy books
-// let book1 = new book('AwesomeTitle', 'MagicAuthor', 534, 'Yes').addBook();
-// let book2 = new book('MegaTitle', 'MegaAuthor', 123, 'No').addBook();
+
 
 
 // Append Library to table
@@ -55,6 +53,14 @@ const libraryTable = document.getElementById('libraryTable');
         deleteButton.setAttribute('class', 'deleteButton');
         deleteButton.addEventListener('click', (e) => {deleteRow(i)});
         newRow.children[4].appendChild(deleteButton);
+
+        ////Generate and append toggle button to new library entries
+        let toggleButton = document.createElement('button');
+        toggleButton.innerHTML = 'Toggle Read Status';
+        toggleButton.setAttribute('id', 'toggleRead' +i);
+        toggleButton.setAttribute('class', 'toggleButton');
+        toggleButton.addEventListener('click', (e) => {toggleRead(i-1)});
+        newRow.children[4].appendChild(toggleButton);
 
 
 
@@ -94,12 +100,6 @@ const addBookButton= document.getElementById('addBook');
         return;
     }
 
-       
-    
-
-   
-   
-
     //Reset input form
     document.getElementById('bookName').value = '';
     document.getElementById('authorName').value = '';
@@ -113,7 +113,8 @@ cancelButton.addEventListener('click', (e) => {
     formContainer.style.visibility = 'hidden';
 })
 
-// Render all items from library array
+// Render all items from library array. 
+//0 represents the starting value of iterating through the library object.
 render(0);
 
 
@@ -121,5 +122,20 @@ render(0);
 function deleteRow(i) {
     let deleteRow = document.getElementById('rowNumber' + (i-1));
     deleteRow.parentNode.removeChild(deleteRow);
+}
+
+//Toggle function for changing read value in object key.
+function toggleRead(i) {
+
+    let updateCell = document.getElementById('rowNumber' + (i));
+
+    if(myLibrary[i].read.toLowerCase() === 'no') {
+        myLibrary[i].read = 'yes';
+        updateCell.children[3].innerHTML = 'Yes';
+    }
+    else if(myLibrary[i].read.toLowerCase() === 'yes') {
+        myLibrary[i].read = 'no';
+        updateCell.children[3].innerHTML = 'No';
+    }
 }
 
