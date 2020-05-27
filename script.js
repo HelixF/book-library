@@ -81,11 +81,24 @@ const addBookButton= document.getElementById('addBook');
     const pageNumber = document.getElementById('pageNumber').value;
     const isRead = document.getElementById('isRead').value;
 
-    new book(bookName, authorName, pageNumber, isRead).addBook();   
+    //Check for input value for having read the book to be yes or no
+    //Needed for toggling the value in the object
+    if ((isRead.toLowerCase() === 'yes') | (isRead.toLowerCase() === 'no')) {
+        new book(bookName, authorName, pageNumber, isRead).addBook();
+
+        //Adds only the last added book to the table
+        render(myLibrary.length-1);
+    }
+    else {
+        alert('The value for having read the book can only be Yes or No');
+        return;
+    }
+
+       
     
 
-    //Adds only the last added book to the table
-    render(myLibrary.length-1);
+   
+   
 
     //Reset input form
     document.getElementById('bookName').value = '';
